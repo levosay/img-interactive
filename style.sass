@@ -1,0 +1,64 @@
+body
+  margin: 0
+  padding: 0 200px
+.map
+  position: relative
+  display: flex
+  align-items: center
+  align-content: center
+  justify-content: center
+  width: 100%
+
+
+  &__img
+    width: 100%
+    display: block
+
+  &__svg
+    polygon
+      opacity: 0
+      cursor: pointer
+      transition: opacity 0.5s, visibility 0s linear 0.8s
+
+
+.visible
+  opacity: 1 !important
+
+.hint
+  &-wrapper
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 22222
+    height: 40px
+    background: #fff
+    display: flex
+    align-items: center
+    padding-right: 20px
+    transition: 300ms opacity ease-out
+    pointer-events: none
+  &__number
+    width: 40px
+    height: 40px
+    color: #fff
+    font-size: 27px
+    font-weight: 700
+    display: flex
+    align-items: center
+    justify-content: center
+    text-transform: uppercase
+    background: #547693
+  &__title
+    display: flex
+    flex-direction: column-reverse
+    color: #858585
+    font-size: 9px
+    font-weight: 700
+    text-transform: uppercase
+    padding-left: 10px
+
+  &__text
+    display: block
+    color: #00b18f
+    margin-bottom: 3px
+
