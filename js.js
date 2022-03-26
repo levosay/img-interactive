@@ -3,7 +3,6 @@ const template = document.querySelector('#hint')
 const numberHint = template.querySelector('.hint__number')
 const titleHint = template.querySelector('.hint__title')
 
-
 const showHint = (number, name) => {
   template.classList.add('active')
   numberHint.innerHTML = number
