@@ -17,17 +17,14 @@ body {
     cursor: pointer;
     transition: opacity 0.5s, visibility 0s linear 0.8s; }
 
-.visible {
-  opacity: 1 !important; }
-
 .hint-wrapper {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 22222;
   height: 40px;
   background: #fff;
-  display: flex;
   align-items: center;
   padding-right: 20px;
   transition: 300ms opacity ease-out;
@@ -45,15 +42,23 @@ body {
   background: #547693; }
 .hint__title {
   display: flex;
-  flex-direction: column-reverse;
-  color: #858585;
-  font-size: 9px;
-  font-weight: 700;
-  text-transform: uppercase;
-  padding-left: 10px; }
-.hint__text {
-  display: block;
-  color: #00b18f;
-  margin-bottom: 3px; }
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 5px; }
+  .hint__title h4 {
+    margin: 0;
+    color: #858585;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase; }
+  .hint__title span {
+    display: block;
+    color: #00b18f; }
+
+.visible {
+  opacity: 1 !important; }
+
+.active {
+  display: flex; }
 
 /*# sourceMappingURL=style.css.map */

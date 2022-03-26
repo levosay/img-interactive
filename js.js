@@ -1,50 +1,31 @@
-const polygonElem = document.querySelectorAll('polygon')
-const map = document.querySelector('.map')
+const polygonElements = document.querySelectorAll('polygon')
+const template = document.querySelector('#hint')
+const numberHint = template.querySelector('.hint__number')
+const titleHint = template.querySelector('.hint__title')
 
-const createHint = (number, name) => {
-  const wrapper = document.createElement('div')
-  const numb = document.createElement('div')
-  const title = document.createElement('div')
-  const error = document.createElement('div')
-  const span = document.createElement('span')
 
-  wrapper.classList.add('hint-wrapper')
-  numb.classList.add('hint__number')
-  title.classList.add('hint__title')
-  error.classList.add('hint__error')
-  span.classList.add('hint__text')
-
-  numb.innerHTML = number
-  span.innerHTML = 'Корпус'
-
-  wrapper.append(numb)
-  title.append(name)
-  title.append(span)
-  wrapper.append(title)
-
-  map.append(wrapper)
+const showHint = (number, name) => {
+  template.classList.add('active')
+  numberHint.innerHTML = number
+  titleHint.innerHTML = `<h4>${name}</h4> <span>Корпус</span>`
 }
 
-
-
-polygonElem.forEach(item => {
-  item.addEventListener('mousemove', (event) => {
-    item.classList.add('visible')
-    const hintWrapper = document.querySelector('.hint-wrapper')
-
-    hintWrapper.style.top = `${event.y + 27}px`
-    hintWrapper.style.left = `${event.x + 10}px`
+polygonElements.forEach(polygon => {
+  polygon.addEventListener('mousemove', (event) => {
+    template.style.top = `${event.y + 27}px`
+    template.style.left = `${event.x + 10}px`
+    polygon.classList.add('visible')
   })
 
-  item.addEventListener('mouseleave', () => {
-    item.classList.remove('visible')
-    document.querySelector('.hint-wrapper').remove()
+  polygon.addEventListener('mouseleave', () => {
+    polygon.classList.remove('visible')
+    template.classList.remove('active')
   })
 
-  item.addEventListener('mouseenter', () => {
-    let dataNumber = item.getAttribute('data-number')
-    let dataName = item.getAttribute('data-name')
+  polygon.addEventListener('mouseenter', () => {
+    const dataNumber = polygon.getAttribute('data-number')
+    const dataName = polygon.getAttribute('data-name')
 
-    createHint(dataNumber, dataName)
+    showHint(dataNumber, dataName)
   })
 })
